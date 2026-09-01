@@ -2,13 +2,9 @@
 
 ## Overview
 
-This project simulates a small enterprise IT environment used to practice
-help desk administration, Active Directory management, Group Policy,
-network troubleshooting, and IT ticket management.
+This project simulates a small enterprise IT environment used to practice help desk administration, Active Directory management, Group Policy, network troubleshooting, and IT ticket management.
 
-The environment consists of a Windows Server domain controller, a
-domain joined Windows 11 workstation, and an Ubuntu Server hosting
-osTicket.
+The environment consists of a Windows Server domain controller, a domain-joined Windows 11 workstation, and an Ubuntu Server hosting osTicket.
 
 ## Lab Architecture
 
@@ -45,40 +41,79 @@ osTicket.
 - PHP
 - MariaDB
 
+## Infrastructure
+
+### Windows Server Domain Controller
+
+DC01 was configured as the Windows Server domain controller for the lab environment.
+
+![DC01 Server Overview](screenshots/02-dc01-server-overview.png)
+
+### Windows 11 Workstation
+
+CLIENT01 was configured as the employee workstation used for domain authentication, Group Policy testing, and help desk troubleshooting.
+
+![CLIENT01 Workstation](screenshots/03-client01-workstation.png)
+
+### Network Configuration
+
+Verified the network configuration of DC01 and its connectivity within the VMware lab environment.
+
+![DC01 Network Configuration](screenshots/04-dc01-network-configuration.png)
+
 ## Active Directory Configuration
 
-Created a simulated corporate Active Directory environment using the
-corp.lab domain.
+Created a simulated corporate Active Directory environment using the `corp.lab` domain.
 
-Configured organizational units for users and workstations and created
-test employee accounts for help desk scenarios.
+Configured organizational units for users, workstations, servers, and departmental resources.
 
-![Active Directory](screenshots/01-active-directory-users.png)
+![Active Directory Users](screenshots/01-active-directory-users.png)
+
+### Organizational Unit Structure
+
+Created departmental organizational units for IT, HR, Finance, and Sales, along with separate OUs for workstations, servers, and security groups.
+
+![Active Directory OU Structure](screenshots/05-active-directory-ou-structure.png)
+
+## User and Group Administration
+
+Created employee accounts and department-based security groups to simulate identity and access management in a corporate environment.
+
+![Department User Accounts](screenshots/06-department-user-accounts.png)
+
+Created security groups for each department.
+
+![Active Directory Security Groups](screenshots/07-active-directory-security-groups.png)
+
+Verified security group membership.
+
+![Security Group Membership](screenshots/08-security-group-membership.png)
+
+Verified individual user group membership.
+
+![User Group Membership](screenshots/09-user-group-membership.png)
+
+## PowerShell User Provisioning
+
+Used PowerShell to create Active Directory users, configure account properties, place users in the correct organizational unit, and assign security group membership.
+
+![PowerShell User Provisioning](screenshots/10-powershell-user-provisioning.png)
 
 ## Group Policy
 
-Configured Group Policy Objects to manage domain-joined workstations
-and user settings.
+Configured Group Policy Objects to manage domain users and workstation settings.
 
-Tested policy application on CLIENT01.
+Verified the HR user restriction policy was successfully applied to CLIENT01 using Group Policy Results.
 
-![Group Policy](screenshots/02-group-policy.png)
-
-![GPO Test](screenshots/04-gpo-test.png)
+![HR Group Policy Verification](screenshots/11-gpo-hr-user-restrictions.png)
 
 ## ITSM / Ticketing
 
-Installed and configured osTicket on Ubuntu Server to simulate a
-centralized enterprise help desk ticketing system.
+Installed and configured osTicket on Ubuntu Server to simulate a centralized enterprise help desk ticketing system.
 
-Tickets were categorized by help topic, assigned to technicians,
-documented during troubleshooting, and closed after resolution.
+Tickets are categorized by help topic, assigned to technicians, documented during troubleshooting, and closed after resolution.
 
-![Ticket Dashboard](screenshots/05-ticket-dashboard.png)
-
-![Ticket Details](screenshots/06-ticket-details.png)
-
-![Ticket Resolution](screenshots/07-ticket-resolution.png)
+osTicket screenshots and ticket workflow examples will be added after completing the ticketing scenarios.
 
 ## Ticket Scenarios
 
@@ -105,8 +140,7 @@ Actions performed:
 
 ### New User Onboarding
 
-Created a new Active Directory account and assigned the user to the
-appropriate organizational unit and security groups.
+Created a new Active Directory account and assigned the user to the appropriate organizational unit and security groups.
 
 ### Access Request
 
@@ -114,8 +148,7 @@ Reviewed group membership and granted appropriate department access.
 
 ### Network Connectivity
 
-Diagnosed workstation connectivity using IP and DNS troubleshooting and
-verified communication with internal domain resources.
+Diagnosed workstation connectivity using IP and DNS troubleshooting and verified communication with internal domain resources.
 
 ## Skills Demonstrated
 
@@ -127,6 +160,7 @@ verified communication with internal domain resources.
 - Organizational Unit management
 - Security group management
 - Group Policy configuration
+- PowerShell administration
 - Windows troubleshooting
 - DNS troubleshooting
 - Client-server architecture
